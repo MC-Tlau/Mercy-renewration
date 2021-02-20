@@ -1,0 +1,36 @@
+.body{  
+    font-family: Calibri, Helvetica, sans-serif;  
+    padding: 20px; 
+  
+  }  
+  
+  div
+  {
+    padding: 10px;
+  }
+  .address_form, .reg, .misc, .family, .extra, .conn {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 1.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background-color:#eee;
+  }
+    
+  .registerbtn {  
+    background-color: #4CAF50;  
+    color: white;  
+    padding: 16px 20px;  
+    margin: 8px 0;  
+    border: none;  
+    cursor: pointer;  
+    width: 100%;  
+    opacity: 0.9;  
+  }  
+  .registerbtn:hover {  
+    opacity: 1;  
+  }  
+  
