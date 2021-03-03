@@ -256,9 +256,12 @@ class ApplicantsController extends Controller
     public function storeremarks(Request $request, $id)
     {
         $applicant = Applicant:: find($id);
+        $monitor = Monitoring::where('applicant_id', $id)->first();
         $applicant->remarks = request('rm');
+        $monitor -> application_status_date = Carbon::now();
         $applicant->status = "rejected";
         $applicant->save();
+        $monitor->save();
         Mail::to($applicant->email)->send(new RejectMail($applicant));
         return redirect('/applicants') ->with ('success', "Succesfully Rejected Application Number $applicant->application_no");
 

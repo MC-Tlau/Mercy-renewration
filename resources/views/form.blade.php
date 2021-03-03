@@ -76,7 +76,7 @@
   <hr> 
   </div>
 <div class="container">
-  <form action ="/action" method = "POST" enctype = "multipart/form-data">
+  <form action ="/action" method = "POST" enctype = "multipart/form-data" autocomplete = "off">
   @csrf
   	<fieldset class="f1">
 

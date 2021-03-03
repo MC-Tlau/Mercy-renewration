@@ -46,7 +46,8 @@
     
 
     <h2>MONITORING REPORT OF APPLICANTS</h2>
-
+    @if (count($persons) > 0)
+    
         <table style="width:100%">
         <tr>
             <th>#</th>
@@ -59,6 +60,7 @@
             <th>Date of Accepted/ Rejected</th>
             <th>Date of Ration Card Renewed</th>            
         </tr>
+
 
         @for ($i = 0; $i < count($persons); $i++)
         
@@ -79,6 +81,10 @@
        
         </table>
         {{$persons->links()}}
+
+    @else
+    NO MATCHING RESULTS FOUND
+    @endif
 </body>
 </html>
 

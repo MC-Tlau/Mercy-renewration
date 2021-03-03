@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    public function searchall(Request $request)
+    {
+        $request->validate([
+            'query' => 'required',
+        ]);
+
+        $query = $request->input('query');
+        $persons = Applicant::where('application_no', 'like', '%'.$query.'%')->paginate(9);
+        return view('/search-all', compact('persons'));
+    }
+
     public function searchDcso(Request $request)
     {
         $request->validate([

@@ -50,14 +50,12 @@ Route::get('/ration/{id}', 'HomePageController@download');
 
 Route::get('/time', 'TestingController@edit');
 
-
-
-// Route::get('/download/{id}', 'ApplicantsController@download');
-
-// Route::post('/testform/action', 'testingController@store');
-
 Route::get('/searchclerk', 'SearchController@searchClerk');
+
 Route::get('/searchdcso', 'SearchController@searchDcso');
+
+Route::get('/search', 'SearchController@searchall');
+
 
 Auth::routes();
 

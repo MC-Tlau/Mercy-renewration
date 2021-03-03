@@ -13,18 +13,19 @@ class MonitorController extends Controller
         $persons =  Applicant::paginate(9);
         for ($i = 0; $i < count($persons); $i++)
         {
-            if ($persons[$i]->status == "rejected" )
+            if ($persons[$i]->status == "submitted")
+            {
+                $persons[$i]->status = "";
+            }
+
+            else if ($persons[$i]->status == "rejected" )
             {
                 $persons[$i]->status = "No";
             }
-            else if ($persons[$i]->status == "forwarded" || $persons[$i]->status == "renewed")
-            {
-                $persons[$i]->status = "Yes";
-
-            }   
+               
             else
             {
-                $persons[$i]->status = "";
+                $persons[$i]->status = "Yes";
             }         
 
         }

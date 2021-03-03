@@ -59,7 +59,6 @@
     </div>
 @endif
 
-
     <h2>APPLICANTS</h2>
 
     @if (Session::has('success'))
