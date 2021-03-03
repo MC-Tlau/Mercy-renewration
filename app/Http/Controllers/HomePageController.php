@@ -129,15 +129,17 @@ class HomePageController extends Controller
             return redirect('/')->with('success', 'NO RECORD FOUND!');
         }
 
-        else if ($user->status == "submitted" || $user->status == "forwarded" || $user->status == "Pending Signature")
-        {
-        return redirect('/') ->with ('success', "Application status:  $user->status");
+        else if ($user->status == "renewed") 
+        {   
+            return view('h', compact('user'));
+        }
 
+        else
+        {
+            return redirect('/') ->with ('success', "Application status:  $user->status");
         }
         
-        else if ($user->status == "renewed") 
-        {   return view('h', compact('user'));
-        }
+        
     }
        
 }
