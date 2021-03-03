@@ -1,13 +1,14 @@
 @component('mail::message')
 Application Rejected
 
-Your application has been rejected by the authority. 
-Reg No {{$applicant['register_no']}}
+Your application no {{$applicant['application_no']}} has been rejected by the authority. 
+Remarks from the officer : 
+{{$applicant['remarks']}}
 
 <!-- @component('mail::button', ['url' => ''])
 Button Text
 @endcomponent -->
 
 Thanks,<br>
-{{ config('app.name') }}
+Mercy
 @endcomponent

@@ -1,308 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FORM</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">  
+	<!-- <link rel="stylesheet" type="text/css" href="/css/formstyle.css"> -->
 
-<!DOCTYPE html>  
-<html>  
-<head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<link rel="stylesheet" type="text/css" href="/css/formstyle.css">
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-<script>
-  $(document).ready(function () {
-    load();
-});
-
-function load() {
-    //alert("Working...");
-    $("#txtNoOfRec").focus();
-
-    $("#btnNoOfRec").click(function () {
-        $("#AddControll").empty();
-        var NoOfRec = $("#txtNoOfRec").val();
-
-        //alert("" + NoOfRec);
-
-        if (NoOfRec > 0) {
-            createControll(NoOfRec);
-        }
-    });    
-}
-
-function createControll(NoOfRec) {
-    var tbl = "";
-    var member_number = 0;
-    var age_number = 0;
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/styleform.css">
 
 
-    tbl = "<table class='table table-bordered table-hover'>"+
-                "<tr>"+
-                    "<th> S.No </th>"+
-                    "<th>  Name </th>"+
-                    "<th> Age </th>"+
-                "</tr>";
+	<script>
+	  $(document).ready(function () {
+	    load();
+	});
 
-    for (i = 1; i <= NoOfRec; i++,member_number++,age_number++) {
+	function load() {
+	    //alert("Working...");
+	    $("#txtNoOfRec").focus();
 
-        tbl += "<tr>" +
-                    "<td>" + i + "</td>" +
+	    $("#btnNoOfRec").click(function () {
+	        $("#AddControll").empty();
+	        var NoOfRec = $("#txtNoOfRec").val();
 
-                    "<td>"+
-                        "<input type='text' id='txtFName' placeholder='Name' name = member_number[] autofocus />"+
-                    "</td>"+
+	        //alert("" + NoOfRec);
 
-                    "<td>"+
-                        "<input type='integer' id='txtLName' placeholder='Age' name = age_number[]/>"+
-                    "</td>"+
+	        if (NoOfRec > 0) {
+	            createControll(NoOfRec);
+	        }
+	    });    
+	}
 
-                "</tr>";
-    }
-    tbl += "</table>";
-
-    $("#AddControll").append(tbl);
-}
-</script>
+	function createControll(NoOfRec) {
+	    var tbl = "";
+	    var member_number = 0;
+	    var age_number = 0;
 
 
-@section('content')
-<body>   
-  <div>  
-  <center>  <h1>Renewal Form</h1> </center>
-  <center>  <h3>Mandatory fields are marked by * </h3> </center>  
+	    tbl = "<table class='table table-bordered table-hover'>"+
+	                "<tr>"+
+	                    "<th> S.No </th>"+
+	                    "<th>  Name </th>"+
+	                    "<th> Age </th>"+
+	                "</tr>";
+
+	    for (i = 1; i <= NoOfRec; i++,member_number++,age_number++) {
+
+	        tbl += "<tr>" +
+	                    "<td>" + i + "</td>" +
+
+	                    "<td>"+
+	                        "<input type='text' style = 'width:100%' id='txtFName' placeholder='Name' name = member_number[]  required autofocus />"+
+	                    "</td>"+
+
+	                    "<td>"+
+	                        "<input type='number' id='txtLName' style = 'width:100%'placeholder='Age' name = age_number[] required/>"+
+	                    "</td>"+
+
+	                "</tr>";
+	    }
+	    tbl += "</table>";
+
+	    $("#AddControll").append(tbl);
+	}
+
+	</script>
+</head>
+<body>
+
+
+<div class = "heading">  
+  <center>  <h1>Ration Card Renewal Form</h1> </center>
+  <center>  <h3>Mandatory fields are marked by <span class="required">*</span></h3> </center>  
   <hr> 
   </div>
+<div class="container">
+  <form action ="/action" method = "POST" enctype = "multipart/form-data">
+  @csrf
+  	<fieldset class="f1">
 
-  <form class="form-inline" action = "/action" method = "POST" enctype = "multipart/form-data"> 
-    @csrf   <!-- cross site request forgery -->
-    <fieldset class = "reg">
-    <div >
-      <legend>REGISTRATION INFO</legend>
-      <label> Registration Number * : </label>   
-      <input type="number" name="register_no" placeholder= "Registration No" class = "form-control" required />   
-      <label> Ration Card Number * : </label>   
-      <input type="number" name="ration_no" placeholder="Ration Card No" class = "form-control"  required />   
-    </div>
-    </fieldset>
-    
-    <fieldset class = "address_form">
-    <div class = "form-group">  
-      <legend>ADDRESS INFO</legend>
-      <label>Address- Door number * :  </label> 
-      <input type = "text" class = "form-control" name = "door_no" placeholder = "Enter door number "  required> 
+  		<legend>Registration Info</legend>
 
-      <label>Address- Sub-Locality 1 * :  </label> 
-      <input type = "text" class = "form-control" name = "sub_locality1" placeholder = "Enter sub_locality 1 "  required> 
+	    <div class="row">
+	      <div class="col-25">
+	        <label >Registration Number:</label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name="register_no"  placeholder="Enter registration number" value ="{{old('register_no')}}" >
+			<span style = "color:red" >@error('register_no') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label >Ration Card Number: </label><span class="required" >*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name="ration_no" placeholder="Enter Ration card number" value ="{{old('ration_no')}}">
+			<span style = "color:red" >@error('ration_no') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>Address Info</legend>
+
+		<div class="row">
+	      <div class="col-25">
+	        <label >Adress Door Number : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name="door_no" placeholder="Enter door no" value ="{{old('door_no')}}">
+			<span style = "color:red" >@error('door_no') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label >Adress Sub Locality 1 : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name = "sub_locality1" placeholder="Enter locality" value ="{{old('sub_locality1')}}">
+			<span style = "color:red" >@error('sub_locality1') {{$message}} @enderror</span>
+	      </div> 
+	    </div>
+
+	     <div class="row">
+	      <div class="col-25">
+	        <label >Adress Sub Locality 2 : </label>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name = "sub_locality2" placeholder="Enter locality 2">
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label >Address- Ward Number : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name = "ward_door_no" placeholder= "6-digit" value ="{{old('ward_door_no')}}">
+			<span style = "color:red" >@error('ward_door_no') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label >Address- Location : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name = "address_location"  placeholder="Enter location" value ="{{old('address_location')}}">
+			<span style = "color:red" >@error('address_location') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Address Pin Code : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="number" name = "pin_code"  placeholder="Enter pin code" value ="{{old('pin_code')}}">
+			<span style = "color:red" >@error('pin_code') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Address Police Station : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name = "police_station"  placeholder="Enter police station" value ="{{old('police_station')}}">
+			<span style = "color:red" >@error('police_station') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Residing Period of Above Address : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="number" name = "residing_period" placeholder="Please enter in years" value ="{{old('residing_period')}}">
+			<span style = "color:red" >@error('residing_period') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Address Post Office : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name = "post_office"  placeholder="Enter post office" value ="{{old('post_office')}}">
+			<span style = "color:red" >@error('post_office') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Select Sub-District : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <select name = "sub_district" required>  
+	        <option value="">None</option>
+	        <option value="Aibawk">Aibawk</option>  
+	        <option value="Bilkhawthlir">Bilkhawthlir</option>  
+	        <option value="Champhai">Champhai</option>  
+	        <option value="Chawngte">Chawngte</option>  
+	        <option value="Darlawn">Darlawn</option>  
+	        <option value="East Lungdar">East Lungdar </option>  
+	        <option value="East Lungdar (Pt)">East Lungdar (Pt)</option>
+
+	        <option value="Hnahthial">Hnahthial</option>  
+	        <option value="Khawbung">Khawbung</option>  
+	        <option value="Khawzawl">Khawzawl</option>  
+	        <option value="Lawngtlai">Lawngtlai</option>  
+	        <option value="Lunglei">Lunglei </option>  
+	        <option value="Lungsen">Lungsen </option> 
+
+	        <option value="Hnahthial">Hnahthial</option>  
+	        <option value="Khawbung">Khawbung</option>  
+	        <option value="Khawzawl">Khawzawl</option>  
+	        <option value="Lawngtlai">Lawngtlai</option>  
+	        <option value="Lunglei">Lunglei </option>  
+	        <option value="Lungsen">Lungsen </option> 
+
+      		</select>    
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Select District  : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <select name = "state" required>  
+		      <option value="">None</option>
+		      <option value="Aizawl">Aizawl</option>  
+		      <option value="Kolasib">Kolasib</option>  
+		      <option value="Champhai">Champhai</option>  
+		      <option value="Lawngtlai">Lawngtlai</option>  
+		      <option value="Mamit">Mamit</option>  
+		      <option value="Saiha">Saiha </option>  
+		      <option value="Serchhip">Serchhip</option>
+		      <option value="Lunglei">Lunglei</option>
+		    </select>  
+	      </div>
+	    </div>
+
+	
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Gender : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	       <select name = "gender" required > 
+			  <option value="">None</option> 
+		      <option value="male" {{ old('gender') == "male" ? 'selected' : ''}}>Male</option>  
+		      <option value="female" {{ old('gender') == "female" ? 'selected' : ''}}>Female</option>  
+		      <option value="other" {{ old('gender') == "other" ? 'selected' : ''}}>Other</option>  
+		    </select>
+	      </div>
+	    </div>
+
+	     <div class="row">
+	      <div class="col-25">
+	        <label>Religion : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+			 <select required name = "religion">  
+				<option value="">None</option> 
+			    <option value="Christian" {{ old('religion') == "Christian" ? 'selected' : ''}}>Christian</option>  
+			    <option value="Islam" {{ old('religion') == "Islam" ? 'selected' : ''}}>Islam</option>  
+			    <option value="Hindu" {{ old('religion') == "Hindu" ? 'selected' : ''}}>Hindu</option>
+			    <option value="Other" {{ old('religion') == "Other" ? 'selected' : ''}}>Other</option>
+
+			  </select>
+  	      </div>
+	    </div>
+	    
+	</fieldset>
+
+	<fieldset>
+		<legend>Family Info</legend>
+
+		<div class="row">
+	      <div class="col-25">
+	        <label>Name of Head of the Family : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name = "family_head"  placeholder="Enter head of family" value ="{{old('family_head')}}">
+			<span style = "color:red" >@error('family_head') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Monthly income of  Karta (Head) : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="number" name = "income"  placeholder="Enter income" value ="{{old('income')}}">
+			<span style = "color:red" >@error('income') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Appellation : </label>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name="appellation" placeholder = "Mr/Mrs/Dr">
+	      </div>
+	    </div>
+
+	     <div class="row">
+	      <div class="col-25">
+	        <label>Suffix : </label>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name="suffix" placeholder = "Enter suffix">
+	      </div>
+	    </div>
+
+	     <div class="row">
+	      <div class="col-25">
+	        <label>Relationship Type : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <select name = "relationship" required> 
+			    <option value="">None</option> 
+			    <option value="Son_of "{{ old('relationship') == "Son_of" ? 'selected' : ''}}>S/o</option>  
+			    <option value="Daughter_of" {{ old('relationship') == "Daughter_of" ? 'selected' : ''}}>D/o</option>  
+			    <option value="Wife_of" {{ old('relationship') == "Wife_of" ? 'selected' : ''}}>W/o</option>
+			    <option value="Husband_of" {{ old('relationship') == "Husband_of" ? 'selected' : ''}}>H/o</option>  
+			    <option value="Father_of" {{ old('relationship') == "Father_of" ? 'selected' : ''}}>F/o</option>  
+			    <option value="Mother_of" {{ old('relationship') == "Mother_of" ? 'selected' : ''}}>M/o</option>  >
+   			</select>
+	      </div>
+	    </div>
+
+	     <div class="row">
+	      <div class="col-25">
+	        <label>Occupation : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" name="occupation" placeholder = "Enter occupation" value ="{{old('occupation')}}">
+			<span style = "color:red" >@error('occupation') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Enter Number of Family Members : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <div >
+	            <input type="number" id="txtNoOfRec" name = "mem_num" required />
+				<span style = "color:red" >@error('mem_num') {{$message}} @enderror</span>
+	            <input type="button" value="CREATE" id="btnNoOfRec" required/>
+	        </div>
+	        <br />
+	        <div id="AddControll">
+        	</div>
+	      </div>
+	    </div>
+
+	     <div class="row">
+	      <div class="col-25">
+	        <label>Electricity Connection : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type = "radio" name = "electricity" id = "yes" value = "yes" required {{ (old('electricity') == 'yes') ? 'checked' : ''}}>
+		    <label for = "yes">Yes</label>
+		    <input type = "radio" name = "electricity" id = "no" value = "no" required {{ (old('electricity') == 'no') ? 'checked' : ''}} >
+		    <label>No </label> <br>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Gas Connection : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	       <input type = "radio" name = "gas" id = "yes" value = "yes" required {{ (old('gas') == 'yes') ? 'checked' : ''}}>
+		    <label for = "yes">Yes</label>
+		    <input type = "radio" name = "gas" id = "no" value = "no" required {{ (old('gas') == 'no') ? 'checked' : ''}} >
+		    <label>No </label>
+		  </div>
+	    </div>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>Documents</legend>
+
+		<div class="row">
+	      <div class="col-25">
+	        <label>Old Ration Card : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="file" id="old_ration_document" name="old_ration_document" >
+			<br>
+			<span style = "color:red" >@error('old_ration_document') {{$message}} @enderror</span>
+	        
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Aadhaar Card : </label><span class="required">*</span>
+	      </div>
+	      <div class="col-75">
+	        <input type="file" id="aadhaar_document" name="aadhaar_document" > 
+			<br>
+			<span style = "color:red" >@error('aadhaar_document') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>Misc</legend>
+
+		<div class="row">
+	      <div class="col-25">
+	        <label>Date of Birth : </label>
+	      </div>
+	      <div class="col-75">
+	        <input type="date" name = "dob" required value ="{{old('dob')}}">
+	      </div>
+	    </div>
+
+		<div class="row">
+	      <div class="col-25">
+	        <label>Email : </label>
+	      </div>
+	      <div class="col-75">
+	        <input type="email" name = "email" value ="{{old('email')}}">
+			<span style = "color:red" >@error('email') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+
+		<div class="row">
+	      <div class="col-25">
+	        <label>Phone Number : </label>
+	      </div>
+	      <div class="col-75">
+	        <input type="number" name = "phone_number" max = "9999999999" value ="{{old('phone_number')}}">
+			<span style = "color:red" >@error('phone_number') {{$message}} @enderror</span>
+	      </div>
+	    </div>
+		
+		<div class="row">
+	      <div class="col-25">
+	        <label>Note Sheet file number : </label>
+	      </div>
+	      <div class="col-75">
+	        <input type="number" name = "note_sheet_no">
+	      </div>
+	    </div>
+
+		
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Note Sheet : </label>
+	      </div>
+	      <div class="col-75">
+	        <textarea id = "notesheet" name="notesheet"></textarea>
+	      </div>   							
+	    </div>
+
+	    <div class="row">
+	      <div class="col-25">
+	        <label>Remarks : </label>
+	      </div>
+	      <div class="col-75">
+	        <textarea id = "remarks" name="remarks"></textarea>
+	      </div>   							
+	    </div>
+
+	    <div class="row">
+	    <div class="col-25">
+	        <label>Terms and Conditions : </label>
+	      </div>
+	    <div class="col-75">
+	         <input type="checkbox" name="terms" id="terms" required> 
+			 I hereby declare that all the documents attached are verified with originals 
+			<br><br>
+	      </div>   							
+
+	</fieldset>
       
-      <label>Address - Sub locality 2 : </label> 
-      <input type = "text" class = "form-control" name = "sub_locality2" placeholder = "Enter sub_locality 2 "  > 
-
+	<div class = "wrapper">	
+		<button type="submit" class="registerbtn" action = "action.php">SUBMIT</button>  
     </div>
 
-    <div class = "form-group">
-      <label> Address- Ward Number * :  </label> 
-      <input type = "number" class = "form-control" name = "ward_door_no" placeholder = "6-digit"  required> 
-
-      <label> Address- Location :  </label> 
-      <input type = "text" class = "form-control" name = "address_location"  placeholder = "Enter location"  > 
-
-      <label> Address Pin Code * : </label> 
-      <input type = "number" class = "form-control" name = "pin_code"  placeholder = "Enter Pin Code"  required> 
-    </div>
-
-    <div class = "form-group">
-     <!--  <label> Address- Location : </label> 
-      <input type = "text" class = "form-control" name = "address_location"  placeholder = "Enter location" size = "20" > -->
-
-      <label> Address- Police Sation * : </label> 
-      <input type = "text" class = "form-control" name = "police_station"  placeholder = "Enter police station" required >
-
-      <label> Address- Post Office * :  </label> 
-      <input type = "text" class = "form-control" name = "post_office"  placeholder = "Enter post office" required>
-
-      <!-- <label>Phone : </label>   -->
-      <!-- <input type="text" class = "form-control" name="country_code" placeholder="Country Code"  value="+91" size="2"/>
-      <input type="text"  class = "form-control" name="phone_no" placeholder="phone no."  required> -->
-
-    </div>
-    <!-- </fieldset> -->
-
-   <!-- <fieldset class="misc"> -->
-   <div class="form-group">
-
-   <label>Select Sub-District * : </label>    
-      <select class = "form-select" name = "sub_district" required>  
-        <option value="">None</option>
-        <option value="Aibawk">Aibawk</option>  
-        <option value="Bilkhawthlir">Bilkhawthlir</option>  
-        <option value="Champhai">Champhai</option>  
-        <option value="Chawngte">Chawngte</option>  
-        <option value="Darlawn">Darlawn</option>  
-        <option value="East Lungdar">East Lungdar </option>  
-        <option value="East Lungdar (Pt)">East Lungdar (Pt)</option>
-
-        <option value="Hnahthial">Hnahthial</option>  
-        <option value="Khawbung">Khawbung</option>  
-        <option value="Khawzawl">Khawzawl</option>  
-        <option value="Lawngtlai">Lawngtlai</option>  
-        <option value="Lunglei">Lunglei </option>  
-        <option value="Lungsen">Lungsen </option> 
-
-        <option value="Hnahthial">Hnahthial</option>  
-        <option value="Khawbung">Khawbung</option>  
-        <option value="Khawzawl">Khawzawl</option>  
-        <option value="Lawngtlai">Lawngtlai</option>  
-        <option value="Lunglei">Lunglei </option>  
-        <option value="Lungsen">Lungsen </option> 
-
-      </select>    
-
-  <label> Select State * :  </label>    
-    <select name = "state" required>  
-      <option value="">None</option>
-      <option value="Aizawl">Aizawl</option>  
-      <option value="Kolasib">Kolasib</option>  
-      <option value="Champhai">Champhai</option>  
-      <option value="Lawngtlai">Lawngtlai</option>  
-      <option value="Mamit">Mamit</option>  
-      <option value="Saiha">Saiha </option>  
-      <option value="Serchhip">Serchhip</option>
-      <option value="Lunglei">Lunglei</option>
-    </select>  
-
-  <label>Gender * : </label> 
-    <select name = "gender" required>  
-      <option value="male">Male</option>  
-      <option value="female">Female</option>  
-      <option value="other">Other</option>  
-    </select>
-    
-  <label>Religion * : </label>
-  <select required name = "religion">  
-    <option value="Christian ">Christian</option>  
-    <option value="Islam">Islam</option>  
-    <option value="Hindu">Hindu</option>
-  </select>
-  
-  </div>
-
-  </fieldset>
-
-  <fieldset class="family">
-  <legend>FAMILY INFO</legend>
-  
-  <div class = "form-group">
-  <label>Name of Head of the Family * : </label>
-    <input type="text"class = "form-control" name="family_head" placeholder="Enter name of head of family" required>
-  
-  <label>Monthly income of  Karta (Head) * : </label>
-    <input type="number" class="form-control" name="income" placeholder="Enter income" required>    
-  
-  <label>Date of Birth * :</label>
-    <input type = "date" class = "form-control" name = "dob" required>
-
-  </div>
-
-  <div class = "form-group">
-<!--   
-  <label>Name of  the Family Members * : </label>
-    <input type="text" class = "form-control" name="family_member" placeholder="Enter name of the family members" required>  -->
-    
-  <label>Appellation : </label>
-  <input type="text" class="form-control" name="appellation" placeholder = "Mr/Mrs/Dr" >
-  
-  <label>Suffix : </label>
-  <input type="text" class="form-control" name="suffix" placeholder = "Enter suffix" >
-  
-  <label>Relationship Type * :</label>    
-    <select name = "relationship" required> 
-    <option value="">None</option> 
-    <option value="Son_of ">S/o</option>  
-    <option value="Daughter_of">D/o</option>  
-    <option value="Wife_of">W/o</option>
-    <option value="Husband_of">H/o</option>  
-    <option value="Father_of">F/o</option>  
-    <option value="Mother_of">M/o</option>  >
-    </select>
-
-  </div>
-  <div class = "form-group">
-  <label>Occupation * : </label>
-    <input type="text" class="form-control" name="occupation" placeholder = "Enter occupation" required>
-  
-
-  <!-- <label>Age of Family Members * :</label>
-  <input type="number" name = "family_age" placeholder="Enter age" class="form-control" required> -->
+  </form>
+</div>
 
 
-  <label>Residing Period of Above Address * :</label>
-  <input type="number" name = "residing_period" placeholder="Please enter in years" class="form-control" required>
-  </div>
-  </fieldset>
-
-  <fieldset class = "conn">
-  <div class = "form-group">
-
-   
-
-  <label>Electricity Connection: </label>
-    <input type = "radio" name = "electricity" id = "yes" value = "yes" >
-    <label for = "yes">Yes</label>
-    <input type = "radio" name = "electricity" id = "no" value = "no" >
-    <label>No </label> <br>
-
-  <label>Gas Connection: </label>
-    <input type = "radio" name = "gas" id = "yes" value = "yes" >
-    <label for = "yes">Yes</label>
-    <input type = "radio" name = "gas" id = "no" value = "no" >
-    <label>No </label>
-  </div>
-
-  <div class="form-group">
-  <label>List of Scanned supporting documents : </label>
-    <input type="number" class="form-control" name="documents" placeholder="Enter no of documents">
-
-    <!-- <form > -->
-      <input type="file" id="scanned_documents" class = "form-control" name="scanned_documents"> 
-    <!-- </form> -->
-
-  </div>
-  </fieldset>
-
-  <fieldset class = "extra">
-  <div class="form-group">
-        <div >
-            <label id="lblNoOfRec"> Enter Number of Family Members </label>
-            <input type="text" id="txtNoOfRec" />
-            <input type="button" value="CREATE" id="btnNoOfRec" />
-        </div>
-        <br />
-        <div id="AddControll">
-
-        </div>
-    </div>
-  <div class="form-group">
-
-  <label>Note Sheet file number</label>
-    <input type="number" name = "note_sheet_no" class="form-control"> 
-
-  <label for="notesheet">Note Sheet</label>
-    <textarea id = "notesheet" name="notesheet" class="form-control" >
-    </textarea>
-
-  <label for="remarks">Remarks</label>
-    <textarea id = "remarks" name="remarks" class = "form-control">
-    </textarea>
-
-  </div>
-  </fieldset>
-
-  <button type="submit" class="registerbtn" >Register</button>  
-  </form> 
-
-</body>  
-</html>  
-@section('endcontent')
+</body>
+</html>

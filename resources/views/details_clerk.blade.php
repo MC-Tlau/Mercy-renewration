@@ -164,13 +164,22 @@
     </tr>
     
     </table>
-    <form action = "/applicants_clerk/{{$single_record->id}}/action"  method = "POST" enctype = "multipart/form-data">
+    <hr>
+
+    <div class="wrapper1">
+    <form action = "/applicants_clerk/{{$single_record->id}}/action"  method = "POST" enctype = "multipart/form-data"> 
     @csrf
-    <div class = "wrapper">
-            <button type ="submit" class = "btn btn-success btn-lg" name = "issue" id = "button1">UPDATE</button>
-            <button type ="submit" class = "btn btn-danger btn-lg" name = "reject" id = "button2">REJECT</button>
+        <button type ="submit" class = "btn btn-success btn-lg" id = 'button1' name = "update" >UPDATE</button>
+     </form>    
     </div>
-    </form>
+    <br>
+
+    <!-- <div class = "wrapper2">
+    <form action = "/applicants_clerk/{{$single_record->id}}/remarks" method = "get">
+        <button class = "btn btn-danger btn-lg">REJECT</button>
+    </form> 
+    </div> -->
+
 </body>
 </html>
 @endsection('content')

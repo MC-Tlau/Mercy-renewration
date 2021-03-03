@@ -1,0 +1,244 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.info
+{
+	position: relative;
+	margin: 5% 8%;
+	text-align: left;
+	font-size: 13px;
+	color:white;
+	letter-spacing: 1.5px;
+
+}
+.center-button{
+	text-align:center;
+	padding-right: 2em;
+}
+
+.form-container
+{
+	color:white;
+	margin: 8% 30%;
+}
+
+#message
+{
+	width : 65%; 
+	height : 120px;
+	color:black;
+}
+
+.info h3
+{
+	padding-bottom: 10px;
+	text-decoration: underline;
+}
+.alert-success
+{
+	color:white;
+	font-size: large;
+}
+.footer {
+    position:fixed;
+    left:0;
+    bottom:0;
+    width: 100%;
+    text-align: center;
+    color:white;
+    opacity: 0.7;
+    font-size: small;
+    letter-spacing: 3px;
+  }
+body {
+	font-family: 'Poppins', sans-serif;
+}
+.wrapper {
+	width: 1170px;
+	margin: auto;
+}
+body {
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(MIZORAM.jpg);
+	height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+.nav-area {
+	float: right;
+	list-style: none;
+	margin-top: 30px;
+}
+.nav-area li {
+	display: inline-block;
+}
+.nav-area li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 5px 20px;
+	font-family: poppins;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.nav-area li a:hover {
+	background: #fff;
+	color: #333;
+}
+.logo {
+	float: left;
+	width:60px;
+	height:60px;
+	padding-top:20px;
+
+}
+img{
+	margin-left: 180px;
+}
+.gov-text
+{
+	padding-right: 150px;
+	padding-top: 30px;
+	color:white;
+	text-align:center;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	font-size: large;
+	font-family: poppins;
+
+
+}
+
+.welcome-text {
+	position: absolute;
+	padding-top:30px;
+	width: 600px;
+	height: 300px;
+	margin: 10% 10%;
+	text-align: left;
+}
+.welcome-text h1 {
+	color: #fff;
+	text-transform: uppercase;
+	text-align: left;
+	font-size: 50px;
+}
+ span {
+	color:#8ebf42;
+}
+.welcome-text a {
+	border: 1px solid #fff;
+	padding: 10px 25px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 14px;
+	margin-top: 20px;
+	display: inline-block;
+	color: #fff;
+}
+.welcome-text a:hover {
+	background: #fff;
+	color: #333;
+}
+.container  {
+    position: absolute;
+	width: 600px;
+	height: 300px;    
+	margin: 10% 50%;
+	text-align:center;
+      }
+
+.container h1{
+	color: white;
+
+}
+
+input[type=text] {
+	width: 70%;
+	padding: 16px 8px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-family: poppins;
+	font-size: 20px;
+	text-align: center;
+	}
+
+button {
+background-color: #8ebf42;
+color: white;
+padding: 14px 0;
+margin: 10px 0;
+border: none;
+width: 40%;
+font-size: 20px;
+}
+
+.check:hover {
+color: lightgray;
+}
+
+@media (max-width:600px) {
+	.wrapper {
+		width: 80%;
+	}
+	.logo {
+		float: none;
+		width: 50%;
+		text-align: center;
+		margin: auto;
+	}
+	/* img {
+		width:auto ;
+		background-color:white;
+	} */
+	.nav-area {
+		float: none;
+		margin-top: 10;
+	}
+	.nav-area li a {
+		padding: 5px;
+		font-size: 15px;
+	}
+	.nav-area {
+		text-align: center;
+	}
+	.welcome-text {
+		width: 80%;
+		height: auto;
+		margin: 0 10%;
+	}
+	.welcome-text h1 {
+		font-size: 25px;
+		text-align: center;
+	}
+	  .container {
+       	width: 80%;
+		height: auto;
+		margin: 22% 10%;
+		text-align:center;
+      	color: white;
+      	font-size: 10px;
+
+      }
+       input[type=text] {
+      width: 80%;
+      padding: 16px 8px;
+      margin: 10px 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size:16px;
+      }
+      button {
+      background-color: #8ebf42;
+      color: white;
+      padding: 14px 0;
+      margin: 10px 0;
+      border: none;
+      width: 80%;
+
+      }
+}

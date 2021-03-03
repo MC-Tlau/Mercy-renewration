@@ -12,7 +12,9 @@
     {
         font-size:20px;
     }
-    #container {width:100%; text-align:center;}
+    #container {
+        width:100%; text-align:center;
+    }
     button
     {
         background-color: black;
@@ -27,7 +29,7 @@
     <form action="/applicants/{{$id}}/remarks/action" method = "post" enctype = "multipart/form-data">
     @csrf
     <div id="container">
-    <textarea id="remarks" placeholder="Please state your remarks" name="rm" rows="5" cols="50">
+    <textarea id="remarks" placeholder="Please state your remarks" name="rm" rows="5" cols="50" required>
    
     </textarea>
     <br><br>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\testing;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 use App\Applicant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -15,17 +18,14 @@ class TestingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('index');
-    }
+  
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function showform()
     {
         //
         return view('form');
@@ -73,76 +73,35 @@ class TestingController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\testing  $testing
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+ 
+    public function show()
     {
-        $single_record =  Testing::find($id);
-        // dd($single_record);
-        // $filename = $single_record->scanned_documents;
-        // // dd($filename);
-        // $file_path1 = public_path()."/storage/documents/". $filename;
-        // $file_path2 = "/storage/documents/". $filename;
-   
-        //  if (file_exists($file_path2)) 
-        //     { 
-        //         // Send Download
-        //         return Response::download($file_path1, $filename, [ 
-        //             'Content-Length: '. filesize($file_path1) 
-        //         ]); 
-        //     } 
-        //     else 
-        //     { 
-        //         // Error 
-        //         exit('Requested file does not exist on our server!'); 
-        //     }  
-            return view('download')->with('single_record', $single_record);
+        $persons =  Applicant::paginate(1);
+        return view('applicantsinfo_clerk')->with('persons', $persons);
+    
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\testing  $testing
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function edit(testing $testing)
     {
-        //
+        $time = new Carbon();
+        // echo $time->now();
+        echo floor(time());
+        echo '<br>';
+        $number = substr(floor(time()), 5, 10); //imp
+        // echo substr($number, 5, 10);
+        echo $number;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\testing  $testing
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, testing $testing)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\testing  $testing
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(testing $testing)
-    {
-        //
-    }
+ 
 
     public function download($id){
 
         //Carbon
         $applicant = Applicant:: find($id);
         
-        $pdf = PDF::loadView('rationcard',compact('applicant'));
+        $pdf = PDF::loadView('rationcard_final',compact('applicant'));
         $fileName ="";
         try{
             $fileName = $applicant->register_no;
@@ -152,6 +111,30 @@ class TestingController extends Controller
             $fileName = 'myInfo';
         }
         return $pdf->download($fileName.'.pdf');
+        // return $pdf->stream();
 
     }
+    public function status(Request $request)
+    {
+        $reg_no = request('reg_no');
+        // $person = DB::table('applicants')->where('register_no', $find);
+        $user = Applicant::where('register_no',$reg_no)->first();
+        // dd($user);
+        if(!$user)
+        {
+            return redirect('/')->with('success', 'NO RECORD FOUND!');
+        }
+
+        else if ($user->status == "none" || $user->status == "forwarded" || $user->status == "Required Signature")
+        {
+        // return redirect('/') ->with ('check', "status : $user->status");
+        return redirect('/') ->with ('success', "Application status:  $user->status");
+
+        }
+        
+        else if ($user->status == "renewed") 
+        {   return view('h', compact('user'));
+        }
+    }
+       
 }

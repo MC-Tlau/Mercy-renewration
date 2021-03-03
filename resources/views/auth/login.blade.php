@@ -1,12 +1,58 @@
-@extends('layouts.layout')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Department Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css"> 
+    <link rel="stylesheet" href="/css/app.css">    
 
+</head>
+<body>
+    <header>
+        
+    <div class="wrapper">
+        <div class="logo">
+            <img src="india.png"  width="60px" height="80px" alt="gov" id = "india">
+            
+        </div>
+        <P class = "gov-text">Government of Mizoram <br> Food Civil Supplies and Consumer Affairs</p>
+ 
+<ul class="nav-area">
+<li><a href="/">Home</a></li>
+<li><a href="/info">Info</a></li>
+<li><a href="/contact">Contact</a></li>
+ <!-- Authentication Links -->
+    @guest
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+        </li>
+     
+    @else
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
 
-@section('content')
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </li>
+    @endguest
+</ul>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('CSC Login') }}</div>
+                <div class="card-header">{{ __('Department Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -71,4 +117,14 @@
         </div>
     </div>
 </div>
-@endsection
+
+        
+</header>
+
+<div class="footer">
+<h2>Copyright &copy 2021 | <span> Mercy Lalthangmawii<span></h2>
+</div>
+
+
+</body>
+</html>

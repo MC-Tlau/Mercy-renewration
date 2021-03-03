@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 <!DOCTYPE html>
@@ -16,12 +17,22 @@ function goBack() {
   window.history.back();
 }
 </script> 
+<style>
+.container
+{
+    text-align:center;
+    padding-bottom:20px;
+}
+
+</style>
 
 </head>
 @section('content')
 
 <body>
-<button onclick="goBack()" class = "btn-primary" class = "center">Go Back</button>     
+    <div class = "container">
+<button onclick="goBack()" class = "btn-primary" class = "center">Go Back</button>
+</div>     
     <h2 style = "text-align:center">APPLICANT DETAILED INFORMATION</h2>
 
     <table class = "center">
@@ -164,13 +175,21 @@ function goBack() {
     </tr>
 
     <tr>
-        <th>Document</th>
-        <td><a href="/storage/documents/{{$single_record->scanned_documents}}" target="_blank">Click mee &ensp;</a>
-        <a href="/download/{{$single_record->scanned_documents}}"> Download</a></td>
+        <th>Old Ration Card</th>
+        <td><a href="/storage/documents/{{$single_record->old_ration}}" target="_blank">View &ensp;</a>
+        <a href="/download/{{$single_record->old_ration}}"> Download</a></td>
+      
+    </tr>
+    
+    <tr>
+        <th>Aadhaar Card</th>
+        <td><a href="/storage/documents/{{$single_record->aadhaar}}" target="_blank">View &ensp;</a>
+        <a href="/download/{{$single_record->aadhaar}}"> Download</a></td>
       
     </tr>
     
     </table>
+    <hr>
     
     <div class="wrapper1">
     <form action = "/applicants/{{$single_record->id}}/action"  method = "POST" enctype = "multipart/form-data"> 

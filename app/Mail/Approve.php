@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Applicant;
+
 
 class Approve extends Mailable
 {
@@ -16,9 +18,10 @@ class Approve extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $applicant;
+    public function __construct($applicant)
     {
-        //
+        $this->applicant = $applicant;
     }
 
     /**
@@ -28,6 +31,6 @@ class Approve extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.appr');
+        return $this->markdown('emails.appr')->with('applicant', $this->applicant);
     }
 }

@@ -1,7 +1,18 @@
 * {
     box-sizing: border-box;
   }
-  
+  .container
+  {
+     /* background-image:linear-gradient(rgba(116, 109, 109, 0.8), rgba(48, 43, 43, 0.8)), url(MIZORAM.jpg); */
+    
+     background-color: rgb(255, 255, 255);
+  }
+  /* .heading
+  {
+    background-color:rgb(212, 212, 212);
+    
+  } */
+
   .wrapper {
           text-align: center;
           padding:20px;
@@ -16,7 +27,7 @@
       margin: 8px 0;  
       border-radius: 20px; 
       cursor: pointer;  
-      width: 30%;  
+      width: 20%;  
       opacity: 0.9;
      
   }
@@ -29,7 +40,7 @@
   }
   
   
-  input[type=text], input[type = number],input[type = email], select, textarea {
+  input[type=text], input[type = number],input[type = email],input[type = date], select, textarea {
     width: 50%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -64,6 +75,13 @@
     margin-right: 40px;
   
   }
+  legend
+  {
+    background-color: rgba(0, 0, 0, 0.815);
+    text-transform: uppercase;
+    font-size: large;
+    color:white;
+  }
   
   .col-25 {
     float: left;
@@ -90,7 +108,7 @@
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 900px) {
-    .col-25, .col-75, input[type=submit], input[type = text],input[type = number] {
+    .col-25, .col-75, input[type=submit], input[type = text],input[type = number],input[type = email] {
       width: 90%;
       margin-top: 0;
     }

@@ -9,6 +9,46 @@
     <title>Document</title>
 </head>
 <style>
+	.wrapper1 {
+        text-align: center;
+        padding-left:120px;
+        
+    } 
+	button
+	{   
+		background-color: #008CBA;
+        border-radius: 8px;
+        /* border: 4px double #cccccc; */
+        color: white;
+		font-size:30px;
+		width:15%;
+	}
+	button:hover {
+  	background-color: green;
+  	color: white;
+}
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+    
+
+#family
+{
+	border-collapse: collapse;
+	text-align:center;
+
+}
+
+ .border
+{
+	border: 1px solid black;
+  	padding: 5px;
+	text-align:left;
+	padding-right:50px;
+
+}
 
 	.center
 	{
@@ -17,14 +57,14 @@
 	img
 	{
 		display: block;
-  		margin-left: auto;
-  		margin-right: auto;
+		margin-left:300px;
   
 	}
 	label
 	{
   		
-		float: left;
+		float:right;
+		padding-right:200px;
 	}
 	.container
 	{
@@ -33,138 +73,138 @@
   		margin-right: auto;
 		
 	}
-	.bord
-	{
-		border-style: groove;
-  		border-right-width: thin;
-  		
-	}
 
 	.info
 	{
-		  /border-collapse: collapse;/
+		  /* border-collapse: collapse; */
 		  border: 3px solid black;
 		  padding: 15px;
+		  border-spacing: 5px;
+
+		  
 	}
 	.left
 	{
-		float:left;
+		text-align: left;
+		padding-left: 20px;
+		
 		
 	}
-	.family
-	{
-		 border-style: solid;
-		 width: 100%;
+	#family td, #customers th {
+	border: 1px solid black;
+	text-align:center;
+	
 	}
 	.right
 	{
-		float:right;
-		/* padding-right: 200px; */
+		text-align:right;
+		padding-bottom:20px;
 	}
 	
 
 </style>
 <body>
-	<img class = "center" src="government-of-india.jpg" alt="symbol" style="width:100px;height:100px;" > 
-	<h5 class = "center">GOVERNMENT OF MIZORAM</h5>
+	<img class = "center" src="gov.jpg" alt="symbol" style="width:100px;height:100px;" > 
+	<h4 class = "center">GOVERNMENT OF MIZORAM</h4>
 	<h3 class = "center">FOOD CIVIL SUPPLIES AND CONSUMER AFFAIRS DEPARTMENT</h3>
 	<h4 class = "center">FAMILY RATION CARD</h4>
-	<h3 class = "right">Ration Card Number: </h3> 
+	<h3 class = "right">Ration Card Number:{{$applicant->ration_no}} </h3> 
 
-	<table  height = "500px" width="100%" class = "info">
+	<table  height = "800px" width="100%" class = "info">
 		<tr>
 			<th class = "left">District</th>
-			<th><label>{{$applicant->district}}</label></th>
+			<th class = "border">{{$applicant->district}}</th>
 
-		</tr>
-
-		<tr>
-			<th class = "left">Date of Issue</th>
-			<th><label>{{$applicant->date}}</label></th>
 		</tr>
 
 		<tr>
 			<th class = "left">Name of Family Head</th>
-			<th><label>{{$applicant->family_head}}</label></th>
+			<th class = "border">{{$applicant->family_head}}</th>
 		</tr>
 
 		<tr>
 			<th class = "left">Gender</th>
-			<th><label>{{$applicant->gender}}</label></th>
+			<th class = "border">{{$applicant->gender}}</th>
 
 		</tr>
 
 		<tr>
 			<th class = "left">Date of Birth</th>
-			<th><label>{{$applicant->dob}}</label></th>
+			<th class = "border">{{$applicant->dob}}</th>
 
 		</tr>
 
 		<tr>
 			<th class = "left">Occupation</th>
-			<th><label>{{$applicant->occupation}}</label></th>
+			<th class = "border">{{$applicant->occupation}}</th>
 		</tr>
 
 		<tr>
-			<th class = "left">Present Address</th>
-			<th><label>House No : {{$applicant->door_no}}</label></th>
+			<th class = "left">Address</th>
+			<th class = "border">{{$applicant->location}}</th>
+
+		</tr>
+		
+		<tr>
+			<th class = "left">House No</th>
+			<th class = "border">{{$applicant->door_no}}</th>
 
 		</tr>
 
 		<tr>
 			<th class = "left">Landmark</th>
-			<th><label>{{$applicant->sub_locality}} </label></th>
+			<th class = "border">{{$applicant->sub_locality}}</th>
 		</tr>
 
-		<tr>
-			<th class = "left">Address</th>
-			<th><label>{{$applicant->location}}</label></th>
-		</tr>
-
-
-		<tr>
-			<th class = "left">District</th>
-			<th><label> {{$applicant->district}}</label></th>
-		</tr>
 
 		<tr>
 			<th class = "left">Pin Code</th>
-			<th><label> {{$applicant->pin_code}}</label></th>
+			<th class = "border"> {{$applicant->pin_code}}</th>
 		</tr>
 
 		<tr>
 			<th class = "left">Gas Connection</th>
-			<th><label>{{$applicant->gas}}</label></th>
+			<th class = "border">{{$applicant->gas}}</th>
 		</tr>
 
 		<tr>
 			<th class = "left">Electricity Connection</th>
-			<th><label>{{$applicant->electricity}}</label></th>
+			<th class = "border">{{$applicant->electricity}}</th>
 		</tr>
         @php       
             $persons = explode(',', $applicant->family_members);
+			$ages = explode(',', $applicant->family_ages);
+			$count = count($persons);
         @endphp
 
 	</table>
 
 	<h2 class = center>DETAILS OF FAMILY MEMBERS</h2>
-	<table class = "family">
+	<table id = "family" width="100%">
 		<tr>
 			<th>S.No</th>
 			<th>Member Name</th>
 			<th>Age</th>
 			
 		</tr>
-
+		@for ($i = 0; $i < $count; $i++)
 		<tr>
-			<td>{{$persons[0]}}</td>
-			<td>This is </td>
-			<td>This is </td>
-			<td>This is </td>	
-
+			<td>{{$i+1}}</td>
+			<td>{{$persons[$i]}}</td>
+			<td>{{$ages[$i]}}</td>	
 		</tr>	
+		@endfor
 		
 	</table>
+	<br>
+<hr>
+	<div class="wrapper1">
+    <form action = "/applicants/{{$applicant->id}}/action"  method = "POST" enctype = "multipart/form-data"> 
+    @csrf
+        <button type ="submit" class = "btn btn-success btn-lg" id = 'button1' name = "sign" >SIGN</button>
+     </form>    
+    </div>
+    <br>
 
 </body>
 </html>

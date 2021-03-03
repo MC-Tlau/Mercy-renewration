@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{$applicant->register_no}}</title>
+    <title>{{$applicant->application_no}}</title>
 </head>
 <style>
     body
@@ -34,13 +34,13 @@
 
 <p class = "para">This is to acknowledge the receipt </p>
 <p>RENEWAL OF RATION CARD</p>
-<p>with Application Number <u>{{$applicant->register_no}}</u> </p>
-<p>dated on <u>{{$applicant->created_at}}</u></p>
+<p>with Application Number <u>{{$applicant->application_no}}</u> </p>
+<p>dated on <u>{{ date("d M Y"), strtotime ($applicant->updated_at) }}</u></p>
 <!-- <p>to the <u>{{$applicant->family_head}}</u></p> -->
 <p>has been <u>SUBMITTED</u></p>
 
 <p class = "extra">Place: Aizawl </p>
-<p class = "extra">Date: {{$applicant->created_at}}</p>
+<p class = "extra">Date: {{ date("d M Y"), strtotime ($applicant->updated_at) }}</p>
 
 <p class = "extra2">Registering Authority</p>
 <p class = "extra2">Aizawl, Mizoram</p>

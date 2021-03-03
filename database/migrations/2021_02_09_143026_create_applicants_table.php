@@ -14,21 +14,21 @@ class CreateApplicantsTable extends Migration
     public function up()
     {
         Schema::create('applicants', function (Blueprint $table) {
-            $table->id();
-            $table->integer('register_no')->unique()->default(0);
-            $table->integer('ration_no')->unique()->default(0);
-            $table->date('date');
-
+            $table->increments('id');
+            $table->bigInteger('application_no');
+            $table->string('register_no')->unique()->default(0);
+            $table->string('ration_no')->unique()->default(0);
             $table->string('door_no')->nullable();
             $table->string('sub_locality')->nullable();
             $table->string('sub_locality2')->nullable();
+
             $table->integer('ward_no')->nullable();
             $table->string('location')->nullable();
             $table->integer('pin_code')->nullable();
             $table->string('police_station')->nullable();
             $table->string('post_office')->nullable();
             $table->string('sub_district')->nullable();
-            $table->string('state')->nullable();
+            $table->string('district')->nullable();
             $table->string('gender')->nullable();
 
             $table->string('family_head')->nullable();
@@ -50,8 +50,10 @@ class CreateApplicantsTable extends Migration
 
             $table->string('email')->unique()->default(0);
             $table->biginteger('phone')->unique()->nullable();
-
             $table->integer('documents')->nullable();
+            $table->string('old_ration')->nullable();
+            $table->string('aadhaar')->nullable();
+
             $table->integer('note_sheet_no')->nullable();
             $table->text('note_sheet')->nullable();
             $table->text('remarks')->nullable();

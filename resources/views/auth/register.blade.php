@@ -79,8 +79,8 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <select name="role" id="role">
-                                <option value="0" selected disabled>Select</option>
+                                <select id="role" type="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role">
+                                <option value="" selected='selected' disabled='disabled'>---Select Role---</option>
                                 <option value="1">CSC</option>
                                 <option value="2">DCSO</option>
                                 <option value="3">Clerk</option>

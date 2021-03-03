@@ -3,75 +3,61 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('hh');
 });
 
-Route::get('/dcso', function () {
-    return view('dcso');
+Route::get('/info', function () {
+    return view('info');
 });
 
-Route::get('/clerk', function () {
-    return view('clerk');
+Route::get('/contact', function () {
+    return view('contact');
 });
 
-Route::get('/csc', function () {
-    return view('csc');
-});
+Route::get('/monitor', 'MonitorController@index');
 
+Route::post('/contact', 'ContactController@create');
 
-Route::get('/viewImage', function () {
-    return view('viewImage');
-});
+Route::post('/status', 'HomePageController@status');
 
-Route::get('/index', 'testingcontroller@index');
+Route::get('/form', 'HomePageController@showform') ->middleware('auth','check1'); 
 
-Route::get('/form', 'testingcontroller@create');  //->middleware('auth');
+Route::post('/action', 'ApplicantsController@store')->middleware('auth','check1');
 
-Route::get('/dcsohome', function () {
-    return view('homedcso');
-});
+// Route::POST('/peep', 'HomePageController@store');
 
-Route::get('/homeclerk', function () {
-    return view('clerkhome');
-});
+// Route::get('/download/{id}', 'HomePageController@show');
 
-Route::post('/action', 'ApplicantsController@store');
+Route::get('/applicants', 'ApplicantsController@index')->middleware('auth', 'check2');
 
-Route::POST('/peep', 'TestingController@store');
-
-Route::get('/download/{id}', 'TestingController@show');
-
-Route::get('/applicants', 'ApplicantsController@index');
-
-Route::get('/applicants/{id}', 'ApplicantsController@show');
-
-Route::get('applicants/{id}/remarks', 'ApplicantsController@showremarks');
-
-Route::post('applicants/{id}/remarks/action', 'ApplicantsController@storeremarks');
-
-
-Route::get('/applicants_clerk', 'ApplicantsController_clerk@index');
-
-Route::get('/applicants_clerk/{id}', 'ApplicantsController_clerk@show');
-
-Route::post('/applicants_clerk/{id}/action', 'ApplicantsController_clerk@update');
-
+Route::get('/applicants/{id}', 'ApplicantsController@show')->middleware('auth', 'check2');
 
 Route::post('/applicants/{id}/action', 'ApplicantsController@update');
 
+Route::get('applicants/{id}/remarks', 'ApplicantsController@showremarks')->middleware('auth', 'check2');
+
+Route::post('applicants/{id}/remarks/action', 'ApplicantsController@storeremarks')->middleware('auth', 'check2');
+
+Route::get('/applicants_clerk', 'ApplicantsController_clerk@index')->middleware('auth', 'check3');
+
+Route::get('/applicants_clerk/{id}', 'ApplicantsController_clerk@show')->middleware('auth', 'check3');
+
+Route::post('/applicants_clerk/{id}/action', 'ApplicantsController_clerk@update')->middleware('auth', 'check3');;
+
 Route::get('/pdf/{id}', 'ApplicantsController@myDownload');
 
-Route::get('/ration/{id}', 'TestingController@download');
+Route::get('/ration/{id}', 'HomePageController@download');
 
-// Route::post('/csc/home', 'ApplicantsController@update');
-
-
-Route::get('/testform', function () {
-    return view('testform');
-});
+Route::get('/time', 'TestingController@edit');
 
 
-Route::post('/testform/action', 'testingController@store');
+
+// Route::get('/download/{id}', 'ApplicantsController@download');
+
+// Route::post('/testform/action', 'testingController@store');
+
+Route::get('/searchclerk', 'SearchController@searchClerk');
+Route::get('/searchdcso', 'SearchController@searchDcso');
 
 Auth::routes();
 
