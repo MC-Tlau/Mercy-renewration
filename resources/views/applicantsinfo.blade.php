@@ -1,8 +1,5 @@
 
 @extends('layouts.app')
-<?php
-$c = count($persons);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
