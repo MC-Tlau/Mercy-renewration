@@ -15,7 +15,7 @@ class CreateApplicantsTable extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('application_no');
+            $table->string('application_no');
             $table->string('register_no')->unique()->default(0);
             $table->string('ration_no')->unique()->default(0);
             $table->string('door_no')->nullable();

@@ -30,7 +30,7 @@
 
 </div>
 <div class = "form-container">
-<form class="form-horizontal" method="POST" action="/contact">
+<form class="form-horizontal" method="POST" action="/contact" autocomplete = "off">
   
    {{ csrf_field() }}
       

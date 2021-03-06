@@ -88,8 +88,8 @@ function goBack() {
     </tr>
     
     <tr>
-        <th>State</th>
-        <td>{{$single_record->state}}</td>
+        <th>District</th>
+        <td>{{$single_record->district}}</td>
     </tr>
    
     <tr>
@@ -191,6 +191,7 @@ function goBack() {
     </table>
     <hr>
     
+    @if ($single_record->status == "submitted")
     <div class="wrapper1">
     <form action = "/applicants/{{$single_record->id}}/action"  method = "POST" enctype = "multipart/form-data"> 
     @csrf
@@ -204,7 +205,7 @@ function goBack() {
         <button class = "btn btn-danger btn-lg">REJECT</button>
     </form> 
     </div>
-
+    @endif
    
   
 </body>

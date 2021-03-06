@@ -35,7 +35,7 @@
 	<p>Following are the required information to apply</p>
 	<ul>
 		<li>Applicant details (head of the family).</li>
-		<li>Details of other family members and relation ship.</li>
+		<li>Details of other family members and relationship.</li>
 		<li>Date of Birth and age (of all the members).</li>
 		<li>Occupation and designation of office held any.</li>
 		<li>Signature/thumb impression.</li>
@@ -44,21 +44,14 @@
 		<h3>Required Documents</h3>
 	<ul>
 		<li>Existing Valid ration card.</li>
-		<!-- <li>Address Proof (Water/Electricity/Telephone Bill)</li>
-		<li>Bank Account Pass Book</li>
-		<li>If on rent (Rent Receipt)</li> -->
 		<li>Passport size photograph of the applicant.</li>
-		<!-- <li>Income Certificate from the Village officer (required if income has been changed).</li> -->
 		<li>Mobile number or Email addresses</li>
-		<!-- <li>Birth Certificate (for adding new children)</li>
-		<li>Death certificate (deletion of members)</li>
-		<li>Residential certificate (for address change only)</li> -->
 		<li>Aadhaar Card</li>
 		<p>Note: Always take original along with copy of document while applying. If authorities insist on further information or details please provide for smooth processing.</p>
 	</ul>
 
 	<h3>Processing Time </h3>
-	<p>If your application is fair and complete, the processing time will be 5 – 7 days.</p>
+	<p>If your application is fair and complete, the processing time will be 3 – 5 days.</p>
 
     </div>
 

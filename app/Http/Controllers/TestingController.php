@@ -86,9 +86,12 @@ class TestingController extends Controller
     {
         $time = new Carbon();
         // echo $time->now();
-        echo floor(time());
+        $now = now();
+        echo($now);
         echo '<br>';
-        $number = substr(floor(time()), 5, 10); //imp
+        echo (time());
+        echo '<br>';
+        $number = 'RC'.Carbon::now()->format('Y').substr(floor(time()), 5, 10); //imp
         // echo substr($number, 5, 10);
         echo $number;
 

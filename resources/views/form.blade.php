@@ -357,7 +357,7 @@
 	      </div>
 	      <div class="col-75">
 	        <div >
-	            <input type="number" id="txtNoOfRec" name = "mem_num" required />
+	            <input type="number" id="txtNoOfRec" name = "mem_num" required min = '0' max = '10'/>
 				<span style = "color:red" >@error('mem_num') {{$message}} @enderror</span>
 	            <input type="button" value="CREATE" id="btnNoOfRec" required/>
 	        </div>
@@ -401,7 +401,7 @@
 	        <label>Old Ration Card : </label><span class="required">*</span>
 	      </div>
 	      <div class="col-75">
-	        <input type="file" id="old_ration_document" name="old_ration_document" >
+	        <input type="file" id="old_ration_document" name="old_ration_document" required >
 			<br>
 			<span style = "color:red" >@error('old_ration_document') {{$message}} @enderror</span>
 	        
@@ -413,7 +413,7 @@
 	        <label>Aadhaar Card : </label><span class="required">*</span>
 	      </div>
 	      <div class="col-75">
-	        <input type="file" id="aadhaar_document" name="aadhaar_document" > 
+	        <input type="file" id="aadhaar_document" name="aadhaar_document" required > 
 			<br>
 			<span style = "color:red" >@error('aadhaar_document') {{$message}} @enderror</span>
 	      </div>

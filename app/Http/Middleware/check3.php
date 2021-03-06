@@ -16,10 +16,11 @@ class check3
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->isRole()==3) 
+        if(Auth::check() && Auth::user()->isRole()=='clerk') 
         {
            return $next($request);           
         }
-        return response ('YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE!!');
+        abort (403, 'YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE');
+
     }
 }

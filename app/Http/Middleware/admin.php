@@ -15,10 +15,10 @@ class admin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->isRole()=='11') 
+        if(Auth::check() && Auth::user()->isRole()=='admin') 
         {
            return $next($request);           
         }
-        return response ('YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE!!');
+        abort (403, 'YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE');
     }
 }

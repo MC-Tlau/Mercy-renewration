@@ -31,56 +31,7 @@ class HomePageController extends Controller
         return view('form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //Handle File Upload
-        if($request->hasFile('scanned_documents'))
-        {
-            //get filename with extension
-            $filenameWithExt = $request->file('scanned_documents')->getClientOriginalName();
-            //get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //get just ext
-            $extension = $request->file('scanned_documents')->getClientOriginalExtension();
-            //filename to store
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;
-            //Upload image
-            $path =  $request->file('scanned_documents')->StoreAs('/documents',$fileNameToStore);
-        }
-            else
-            {
-                $fileNameToStore = 'noimage.jpg';
-            }
-        
-            $members = request('member_number');
-            $separate_members = implode(", ", $members);
-            $ages = request('member_age');
-            $s_ages = implode(", ",$ages);
-
-
-        $data = new testing();
-        
-        $data -> family_members = $separate_members;
-        $data -> family_age = $s_ages;
-        $data -> save();
-
-
-    }
-
- 
-    public function show($id)
-    {
-        $single_record =  Testing::find($id);
-        return view('download')->with('single_record', $single_record);
-    }
-
- 
+  
     public function edit(testing $testing)
     {
         $time = new Carbon();
@@ -92,7 +43,7 @@ class HomePageController extends Controller
     public function download($id){
 
         //Carbon
-        $applicant = Applicant:: find($id);
+        $applicant = Applicant:: findorfail($id);
         
         $pdf = PDF::loadView('rationcard_final',compact('applicant'));
         $fileName ="";
@@ -112,10 +63,10 @@ class HomePageController extends Controller
         else
         {
 
-            return response("Nothing to download");
+            abort(403,"Nothing to download");
         }
 
-        // return $pdf->stream();
+       
 
     }
     public function status(Request $request)

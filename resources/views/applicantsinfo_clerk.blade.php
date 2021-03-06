@@ -28,6 +28,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/styletable.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Applicants Information</title>
 </head>
 @section('content')
@@ -60,6 +62,8 @@
             <th>Head of the Family</th>
             <th>Dated</th>
             <th>Form Status</th>
+            <th>View</th>
+
             
         </tr>
   
@@ -67,10 +71,12 @@
         
         <tr>
             <td>{{$i+1}}</td>
-            <td><a href = "/applicants_clerk/{{$persons[$i]->id}}">{{$persons[$i]->application_no}}</a></td>
+            <td>{{$persons[$i]->application_no}}</td>
             <td>{{$persons[$i]->family_head}}</td>
             <td>{{ date("d M Y"), strtotime ($persons[$i]->updated_at) }}</td>
             <td>{{$persons[$i]->status}}</td>
+            <td><a href = "/applicants_clerk/{{$persons[$i]->id}}"><i class = "fa fa-eye"style =" font-size:23px"></i></a></td>
+
 
         </tr>
 

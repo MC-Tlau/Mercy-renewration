@@ -48,7 +48,7 @@ table
 <div class="welcome-text">
         </table>
 
-        <h2 class = "head">Application Number {{$user->register_no}}</h2>
+        <h2 class = "head">Application Number {{$user->application_no}}</h2>
         <table id = "family" width="100%">
             <tr>
                 <th>Head of Family</th>

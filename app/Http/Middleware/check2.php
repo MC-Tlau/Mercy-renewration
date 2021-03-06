@@ -17,10 +17,10 @@ class check2
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->isRole()==2) 
+        if(Auth::check() && Auth::user()->isRole()=='dcso') 
         {
            return $next($request);           
         }
-        return response ('YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE!!');
+        abort (403, 'YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE');
     }
 }

@@ -27,11 +27,15 @@
                   HOMEPAGE
                 </a>
                 
-                @if(Auth::user()->isRole()==2)
+                @if(Auth::user()->isRole()=='dcso')
                 <a class="navbar-brand" href="{{ url('/applicants') }}">APPLICANTS</a>
                 
-                @elseif(Auth::user()->isRole()==3)    
+                @elseif(Auth::user()->isRole()=='clerk')    
                 <a class="navbar-brand" href="{{ url('/applicants_clerk') }}">APPLICANTS</a>
+                
+                @elseif(Auth::user()->isRole()=='admin')   
+                <a class="navbar-brand" href="/admin">ADMIN PANEL</a>
+                
                 @endif
                 
                 
@@ -48,11 +52,18 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                    @if(Auth::user()->isRole()==2)
+                    @if(Auth::user()->isRole()=='dcso')
                     <a class="navbar-brand" href="/monitor">
                     MONITORING REPORT
                     </a>
                     @endif
+
+                    @if(Auth::user()->isRole()=='admin')
+                    <a class="navbar-brand" href="register">
+                    REGISTER NEW USERS
+                    </a>
+                    @endif
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -80,6 +91,8 @@
                                         @csrf
                                     </form>
                                 </div>
+                       
+
                             </li>
                         @endguest
                     </ul>

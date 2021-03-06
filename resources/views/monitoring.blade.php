@@ -50,10 +50,8 @@
         <table style="width:100%">
         <tr>
             <th>#</th>
-            <th>Name of Block</th>
-            <th>Application Registration Number</th>
+            <th>Application Number</th>
             <th>Name of Owner</th>
-            <th>Name of Village</th>
             <th>Date of Application Received</th>
             <th>Application Accepted/ Rejected(Y/N)</th>
             <th>Date of Accepted/ Rejected</th>
@@ -64,10 +62,8 @@
         
             <tr>
                 <td>{{ $i+1 }}</td>
-                <td>{{ NULL}}</td>
                 <td>{{ $persons[$i]->application_no}}</td>
                 <td>{{ $persons[$i]->family_head}}</td>
-                <td>{{ NULL}}</td>
                 <td>{{ $persons[$i]->monitoring->application_received_date}}</td>
                 <td>{{ $persons[$i]->status}}</td>
                 <td>{{ $persons[$i]->monitoring->application_status_date}}</td>

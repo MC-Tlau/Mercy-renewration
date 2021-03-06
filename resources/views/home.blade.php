@@ -74,7 +74,7 @@
 
 
                     You are logged in!
-                    @if ( auth()->user()->role == 1)
+                    @if ( auth()->user()->role == 'csc')
                         <p><a href = "/form">CONTINUE TO FORM</a></p>
 
                         @if (Session::has('success'))
@@ -83,11 +83,17 @@
                         
                         @endif
 
-                    @elseif ( auth()->user()->role == 2)
-                        <p><a href = "/applicants">CONTINUE </p>
-                    @elseif ( auth()->user()->role == 3)
-                        <p><a href = "/applicants_clerk">CONTINUE </p> 
+                    @elseif ( auth()->user()->role == 'dcso')
+                    <script> window.location = "/applicants"; </script>
+
+                    @elseif ( auth()->user()->role == 'clerk')
+                    <script> window.location = "/applicants_clerk"; </script>
+
+                    @elseif ( auth()->user()->role == 'admin')
+                    <script> window.location = "/admin"; </script>
+                    
                     @endif
+                    
 
                          
                     

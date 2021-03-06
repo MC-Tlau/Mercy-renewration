@@ -69,7 +69,8 @@ class ApplicantsController extends Controller
         $monitor = new Monitoring();
         $monitor -> application_received_date = Carbon::now()->toDateTimeString();
 
-        $data -> application_no = substr(floor(time()), 5, 10);
+        // $data -> application_no = substr(floor(time()), 5, 10);
+        $data -> application_no = 'RC'.Carbon::now()->format('Y').substr(floor(time()), 5, 10);
         $data -> register_no = request('register_no');
         $data -> ration_no = request('ration_no');
 
@@ -140,13 +141,18 @@ class ApplicantsController extends Controller
             $data -> aadhaar = $fileNameToStore2;
         }
 
+        
         $members = request('member_number');
-        $separate_members = implode(", ", $members);
-        $ages = request('age_number');
-        $s_ages = implode(", ",$ages);
-        //Store family members and respective ages as comma separated
-        $data -> family_members = $separate_members;
-        $data -> family_ages = $s_ages;
+        if($members > 0)
+        {
+            $separate_members = implode(", ", $members);
+            $ages = request('age_number');
+            $s_ages = implode(", ",$ages);
+            //Store family members and respective ages as comma separated
+            $data -> family_members = $separate_members;
+            $data -> family_ages = $s_ages;
+        }
+       
         $data -> save();
         $data -> monitoring()->save($monitor);
 

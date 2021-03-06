@@ -70,8 +70,8 @@
     </tr>
     
     <tr>
-        <th>State</th>
-        <td>{{$single_record->state}}</td>
+        <th>District</th>
+        <td>{{$single_record->district}}</td>
     </tr>
    
     <tr>
@@ -157,15 +157,22 @@
     </tr>
 
     <tr>
-        <th>Document</th>
-        <td><a href="/storage/documents/{{$single_record->scanned_documents}}" target="_blank">Click mee &ensp;</a>
-        <a href="/download/{{$single_record->scanned_documents}}"> Download</a></td>
+        <th>Old Ration Card</th>
+        <td><a href="/storage/documents/{{$single_record->old_ration}}" target="_blank">View &ensp;</a>
+        <a href="/download/{{$single_record->old_ration}}"> Download</a></td>
+      
+    </tr>
+    
+    <tr>
+        <th>Aadhaar Card</th>
+        <td><a href="/storage/documents/{{$single_record->aadhaar}}" target="_blank">View &ensp;</a>
+        <a href="/download/{{$single_record->aadhaar}}"> Download</a></td>
       
     </tr>
     
     </table>
     <hr>
-
+    @if($single_record->status == "forwarded")
     <div class="wrapper1">
     <form action = "/applicants_clerk/{{$single_record->id}}/action"  method = "POST" enctype = "multipart/form-data"> 
     @csrf
@@ -173,12 +180,8 @@
      </form>    
     </div>
     <br>
+    @endif
 
-    <!-- <div class = "wrapper2">
-    <form action = "/applicants_clerk/{{$single_record->id}}/remarks" method = "get">
-        <button class = "btn btn-danger btn-lg">REJECT</button>
-    </form> 
-    </div> -->
 
 </body>
 </html>

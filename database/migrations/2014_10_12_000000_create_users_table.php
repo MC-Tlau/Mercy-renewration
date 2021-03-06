@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer('role');
+            $table->string('role');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -23,6 +23,15 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert(
+            array(
+                'role'=> 'admin',
+                'email' => 'admin123@gmail.com',
+                'name' => 'admin',
+                'password' => Hash::make('adminpassword'),
+            )
+        );
     }
 
     /**
